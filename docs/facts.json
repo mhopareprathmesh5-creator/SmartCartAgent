@@ -1,0 +1,370 @@
+{
+  "tests_offline": 108,
+  "tests_live": 3,
+  "tests_per_file": {
+    "test_admin.py": 9,
+    "test_agent.py": 15,
+    "test_api.py": 12,
+    "test_budget.py": 6,
+    "test_cart.py": 15,
+    "test_catalog.py": 17,
+    "test_eval.py": 5,
+    "test_offers.py": 16,
+    "test_stores.py": 4,
+    "test_study.py": 2,
+    "test_tax.py": 7
+  },
+  "endpoints": 37,
+  "endpoint_list": [
+    "DELETE /carts/{cart_id}/items/{product_id}",
+    "GET /admin/audit",
+    "GET /admin/coupons",
+    "GET /admin/evaluation",
+    "GET /admin/inventory",
+    "GET /admin/me",
+    "GET /admin/orders",
+    "GET /admin/summary",
+    "GET /carts/{cart_id}/bill",
+    "GET /carts/{cart_id}/compare-stores",
+    "GET /carts/{cart_id}/offers",
+    "GET /coupons",
+    "GET /health",
+    "GET /orders/{order_id}",
+    "GET /products/search",
+    "GET /products/{product_id}/stock",
+    "GET /products/{product_id}/substitutes",
+    "GET /sessions/{session_id}",
+    "GET /sessions/{session_id}/budget-plan",
+    "GET /sessions/{session_id}/compare-stores",
+    "GET /stores",
+    "GET /study/runs",
+    "GET /study/summary",
+    "GET /study/tasks",
+    "PATCH /admin/coupons/{code}",
+    "PATCH /admin/inventory/{product_id}",
+    "POST /admin/login",
+    "POST /carts",
+    "POST /carts/{cart_id}/checkout",
+    "POST /chat",
+    "POST /sessions/{session_id}/checkout",
+    "POST /sessions/{session_id}/swaps",
+    "POST /study/runs",
+    "POST /study/runs/{run_id}/finish",
+    "PUT /carts/{cart_id}/items/{product_id}",
+    "PUT /sessions/{session_id}/budget",
+    "PUT /sessions/{session_id}/items/{product_id}"
+  ],
+  "db": {
+    "products": 849,
+    "categories": 9,
+    "product_types": 180,
+    "aisles": 9,
+    "shelves": 64,
+    "out_of_stock": 51,
+    "low_stock": 85,
+    "stock_units": 57202,
+    "coupons": 19,
+    "conflicts": 12,
+    "stores": 3,
+    "store_price_rows": 1566,
+    "tables": 15,
+    "gst_slabs": {
+      "0": 172,
+      "5": 465,
+      "18": 190,
+      "40": 22
+    },
+    "study_runs": 0
+  },
+  "eval": {
+    "generated": "2026-11-12 12:20",
+    "summary": {
+      "goals": 15,
+      "goals_completed": 15,
+      "infra_errors": 0,
+      "task_success_pct": 100.0,
+      "goals_succeeded": 15,
+      "goals_succeeded_strict": 15,
+      "goals_pending_confirmation": 0,
+      "checks_passed": 53,
+      "checks_total": 53,
+      "turns": 18,
+      "grounding_accuracy_pct": 100.0,
+      "first_try_grounded_pct": 100.0,
+      "guard_rewrites": 0,
+      "values_audited": 147,
+      "ungrounded_values": [],
+      "discount_captured_pct": 100.0,
+      "carts_at_optimum": 15,
+      "greedy_captured_pct": 100.0,
+      "single_coupon_captured_pct": 72.41,
+      "discount_system_total": "806.39",
+      "discount_optimum_total": "806.39",
+      "substitution_cases": 6,
+      "substitution_correct_pct": 100.0,
+      "substitutes_added": 6,
+      "substitutes_offered": 0,
+      "substitute_top1_pct": 50.0,
+      "latency_median_s": 9.19,
+      "latency_p90_s": 24.39,
+      "latency_max_s": 37.26,
+      "llm_calls_per_turn": 4.22,
+      "tool_calls_per_turn": 4.89,
+      "models_used": [
+        "gemini-3.5-flash-lite"
+      ]
+    },
+    "offline": {
+      "carts": 300,
+      "coupons": 19,
+      "conflict_pairs": 12,
+      "optimal_carts": 300,
+      "system_captured_pct": 100.0,
+      "greedy_captured_pct": 99.97,
+      "single_coupon_captured_pct": 55.61,
+      "greedy_suboptimal_carts": 1,
+      "single_suboptimal_carts": 296,
+      "discount_optimum_total": "202655.89",
+      "discount_system_total": "202655.89",
+      "discount_greedy_total": "202590.81",
+      "discount_single_total": "112688.58",
+      "optimizer_ms_median": 0.197,
+      "optimizer_ms_max": 0.664
+    },
+    "goals": [
+      {
+        "id": "G01",
+        "title": "Multi-item basic list",
+        "features": [
+          "multi-item",
+          "location",
+          "billing"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 37.3,
+        "turns": 1
+      },
+      {
+        "id": "G02",
+        "title": "Named product out of stock",
+        "features": [
+          "out-of-stock",
+          "substitution"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 16.4,
+        "turns": 1
+      },
+      {
+        "id": "G03",
+        "title": "Two out-of-stock items",
+        "features": [
+          "out-of-stock",
+          "substitution"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 10.5,
+        "turns": 1
+      },
+      {
+        "id": "G04",
+        "title": "Budget + coupon + out of stock (main demo)",
+        "features": [
+          "budget",
+          "coupon",
+          "out-of-stock",
+          "budget-fit"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 24.4,
+        "turns": 1
+      },
+      {
+        "id": "G05",
+        "title": "Store navigation only",
+        "features": [
+          "location"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 3.8,
+        "turns": 1
+      },
+      {
+        "id": "G06",
+        "title": "Typos in the request",
+        "features": [
+          "typo-tolerance",
+          "multi-item"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 6.4,
+        "turns": 1
+      },
+      {
+        "id": "G07",
+        "title": "Quantity above live stock",
+        "features": [
+          "stock-limit",
+          "substitution"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 11.7,
+        "turns": 1
+      },
+      {
+        "id": "G08",
+        "title": "Multi-turn cart edit",
+        "features": [
+          "multi-turn",
+          "memory",
+          "cart-edit"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 17.8,
+        "turns": 2
+      },
+      {
+        "id": "G09",
+        "title": "Staples cart with stacked coupons",
+        "features": [
+          "coupon",
+          "multi-item"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 6.8,
+        "turns": 1
+      },
+      {
+        "id": "G10",
+        "title": "Tight budget",
+        "features": [
+          "budget",
+          "multi-item"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 18.4,
+        "turns": 1
+      },
+      {
+        "id": "G11",
+        "title": "GST question after shopping",
+        "features": [
+          "gst",
+          "out-of-stock",
+          "multi-turn"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 14.5,
+        "turns": 2
+      },
+      {
+        "id": "G12",
+        "title": "Personal care items",
+        "features": [
+          "multi-item",
+          "location"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 7.7,
+        "turns": 1
+      },
+      {
+        "id": "G13",
+        "title": "Hindi request",
+        "features": [
+          "hindi",
+          "multi-item"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 9.6,
+        "turns": 1
+      },
+      {
+        "id": "G14",
+        "title": "Marathi request + navigation",
+        "features": [
+          "marathi",
+          "location"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 6.8,
+        "turns": 1
+      },
+      {
+        "id": "G15",
+        "title": "Compare the cart across stores",
+        "features": [
+          "multi-store",
+          "multi-turn"
+        ],
+        "success": true,
+        "infra_error": false,
+        "grounded": true,
+        "latency_s": 11.8,
+        "turns": 2
+      }
+    ]
+  },
+  "baseline": {
+    "goals": 12,
+    "goals_completed": 12,
+    "infra_errors": 0,
+    "task_success_pct": 66.67,
+    "goals_succeeded": 8,
+    "checks_passed": 39,
+    "checks_total": 44,
+    "turns": 14,
+    "grounding_accuracy_pct": 100.0,
+    "first_try_grounded_pct": 100.0,
+    "guard_rewrites": 0,
+    "values_audited": 77,
+    "ungrounded_values": [],
+    "discount_captured_pct": 100.0,
+    "carts_at_optimum": 12,
+    "greedy_captured_pct": 100.0,
+    "single_coupon_captured_pct": 74.67,
+    "discount_system_total": "592.20",
+    "discount_optimum_total": "592.20",
+    "substitution_cases": 6,
+    "substitution_correct_pct": 83.33,
+    "substitutes_added": 2,
+    "substitutes_offered": 3,
+    "substitute_top1_pct": 0.0,
+    "latency_median_s": 6.55,
+    "latency_p90_s": 10.28,
+    "latency_max_s": 14.73,
+    "llm_calls_per_turn": 3.07,
+    "tool_calls_per_turn": 4.79,
+    "models_used": [
+      "gemini-3.5-flash-lite"
+    ]
+  }
+}

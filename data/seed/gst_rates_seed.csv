@@ -1,0 +1,22 @@
+category,sub_category,product_type,gst_rate,note
+Fruits & Vegetables,,,0,fresh produce is exempt
+"Eggs, Meat & Fish",,,0,fresh eggs / meat / fish are exempt
+"Eggs, Meat & Fish","Sausages, Bacon & Salami",,5,processed meat
+"Bakery, Cakes & Dairy",,,5,packaged bakery and dairy
+"Bakery, Cakes & Dairy",Dairy,Milk,0,fresh milk is exempt
+"Bakery, Cakes & Dairy",Breads & Buns,,0,plain bread is exempt
+"Foodgrains, Oil & Masala",,,5,branded staples
+Snacks & Branded Foods,,,5,packaged food
+Beverages,,,5,"tea, coffee, juices, water"
+Beverages,Energy & Soft Drinks,,40,aerated / caffeinated drinks (sin-goods slab)
+Cleaning & Household,,,18,household goods
+Cleaning & Household,Pooja Needs,,5,agarbatti and pooja items
+Beauty & Hygiene,,,18,cosmetics and fragrances
+Beauty & Hygiene,Bath & Hand Wash,,5,soaps
+Beauty & Hygiene,Oral Care,,5,toothpaste and brushes
+Beauty & Hygiene,Hair Care,,5,shampoo and hair oil
+Beauty & Hygiene,Feminine Hygiene,,0,sanitary products are exempt
+Baby Care,,,18,baby accessories
+Baby Care,Diapers & Wipes,,5,diapers
+Baby Care,Baby Food & Formula,,5,baby food
+Baby Care,Feeding & Nursing,,5,feeding bottles

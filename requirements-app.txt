@@ -1,0 +1,9 @@
+# Runtime dependencies of the web app only (used by the Dockerfile / cloud deployment).
+# Development, data pipeline and tests use requirements.txt.
+sqlalchemy>=2.0
+psycopg2-binary>=2.9
+python-dotenv>=1.0
+fastapi>=0.110
+uvicorn[standard]>=0.29
+langgraph>=1.0
+langchain-google-genai>=4.0

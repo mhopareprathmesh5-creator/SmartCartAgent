@@ -1,0 +1,13 @@
+code_a,code_b,reason
+SAVE10,FLAT100,Only one cart-level offer per order
+SAVE10,MEGA15,Only one cart-level offer per order
+SAVE10,FESTIVE150,Only one cart-level offer per order
+FLAT100,MEGA15,Only one cart-level offer per order
+FLAT100,FESTIVE150,Only one cart-level offer per order
+MEGA15,FESTIVE150,Only one cart-level offer per order
+SAVE10,BEV75,Store-wide % offer cannot be combined with the Beverages offer
+DAIRY10,AMUL5,Both discount the same Amul dairy items
+FRESH20,FRESHO25,Both discount the same Fresho produce
+STAPLES50,BBROYAL10,Both discount the same bb Royal staples
+BEV75,COFFEE30,Coffee is already covered by the Beverages offer
+SNACK15,BRIT20,Both discount the same Britannia snacks

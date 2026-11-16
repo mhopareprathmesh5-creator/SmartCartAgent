@@ -1,0 +1,11 @@
+{
+  "name": "smartcart-docs",
+  "private": true,
+  "description": "Builds the Word documents (project guide, report draft, paper draft): npm install, then node build_documents.js",
+  "scripts": {
+    "build": "node build_documents.js"
+  },
+  "dependencies": {
+    "docx": "^9.5.0"
+  }
+}

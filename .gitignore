@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+.env
+data/raw/
+data/processed/
+kaggle.json
+.DS_Store
+.pytest_cache/
+docs/node_modules/

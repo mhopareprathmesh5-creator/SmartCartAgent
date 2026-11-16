@@ -1,0 +1,17 @@
+{
+  "carts": 300,
+  "coupons": 19,
+  "conflict_pairs": 12,
+  "optimal_carts": 300,
+  "system_captured_pct": 100.0,
+  "greedy_captured_pct": 99.97,
+  "single_coupon_captured_pct": 55.61,
+  "greedy_suboptimal_carts": 1,
+  "single_suboptimal_carts": 296,
+  "discount_optimum_total": "202655.89",
+  "discount_system_total": "202655.89",
+  "discount_greedy_total": "202590.81",
+  "discount_single_total": "112688.58",
+  "optimizer_ms_median": 0.227,
+  "optimizer_ms_max": 1.596
+}

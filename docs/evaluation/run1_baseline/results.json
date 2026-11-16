@@ -1,0 +1,1209 @@
+{
+  "generated": "2026-11-12 10:47",
+  "summary": {
+    "goals": 12,
+    "goals_completed": 12,
+    "infra_errors": 0,
+    "task_success_pct": 66.67,
+    "goals_succeeded": 8,
+    "checks_passed": 39,
+    "checks_total": 44,
+    "turns": 14,
+    "grounding_accuracy_pct": 100.0,
+    "first_try_grounded_pct": 100.0,
+    "guard_rewrites": 0,
+    "values_audited": 77,
+    "ungrounded_values": [],
+    "discount_captured_pct": 100.0,
+    "carts_at_optimum": 12,
+    "greedy_captured_pct": 100.0,
+    "single_coupon_captured_pct": 74.67,
+    "discount_system_total": "592.20",
+    "discount_optimum_total": "592.20",
+    "substitution_cases": 6,
+    "substitution_correct_pct": 83.33,
+    "substitutes_added": 2,
+    "substitutes_offered": 3,
+    "substitute_top1_pct": 0.0,
+    "latency_median_s": 6.55,
+    "latency_p90_s": 10.28,
+    "latency_max_s": 14.73,
+    "llm_calls_per_turn": 3.07,
+    "tool_calls_per_turn": 4.79,
+    "models_used": [
+      "gemini-3.5-flash-lite"
+    ]
+  },
+  "offline_offer_study": {
+    "carts": 300,
+    "coupons": 19,
+    "conflict_pairs": 12,
+    "optimal_carts": 300,
+    "system_captured_pct": 100.0,
+    "greedy_captured_pct": 100.0,
+    "single_coupon_captured_pct": 55.58,
+    "greedy_suboptimal_carts": 0,
+    "single_suboptimal_carts": 297,
+    "discount_optimum_total": "202628.53",
+    "discount_system_total": "202628.53",
+    "discount_greedy_total": "202628.53",
+    "discount_single_total": "112616.30",
+    "optimizer_ms_median": 0.307,
+    "optimizer_ms_max": 10.677
+  },
+  "goals": [
+    {
+      "id": "G01",
+      "title": "Multi-item basic list",
+      "features": [
+        "multi-item",
+        "location",
+        "billing"
+      ],
+      "infra_error": false,
+      "turns": [
+        {
+          "message": "I need 2 toned milk, oats, instant coffee and brown bread.",
+          "reply": "I have added the items to your cart:\n\n* **2 × Fresh Toned Milk** (Amul) — Aisle 2, Shelf A2-S5 (Level 1)\n* **1 × Oats - 100% Natural** (Saffola) — Aisle 5, Shelf A5-S9 (Level 4)\n* **1 × Grand Coffee** (Tata Coffee) — Aisle 6, Shelf A6-S1 (Level 2)\n* **1 × Brown Bread - Safe, Preservative Free** (Fresho) — Aisle 2, Shelf A2-S2 (Level 1)\n\nYour current bill total is **₹273.20** (including **₹8.01** GST).",
+          "latency_s": 10.2,
+          "llm_calls": 3,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "search_products",
+            "search_products",
+            "search_products",
+            "search_products",
+            "update_cart",
+            "update_cart",
+            "update_cart",
+            "update_cart"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 6,
+          "service_error": false
+        }
+      ],
+      "cart": [
+        {
+          "product_id": 104,
+          "brand": "Fresho",
+          "name": "Brown Bread - Safe, Preservative Free",
+          "product_type": "Brown, Wheat & Multigrain",
+          "qty": 1
+        },
+        {
+          "product_id": 171,
+          "brand": "Amul",
+          "name": "Fresh Toned Milk",
+          "product_type": "Milk",
+          "qty": 2
+        },
+        {
+          "product_id": 307,
+          "brand": "Tata Coffee",
+          "name": "Grand Coffee",
+          "product_type": "Instant Coffee",
+          "qty": 1
+        },
+        {
+          "product_id": 836,
+          "brand": "Saffola",
+          "name": "Oats - 100% Natural",
+          "product_type": "Oats & Porridge",
+          "qty": 1
+        }
+      ],
+      "final_total": "273.20",
+      "budget": null,
+      "over_budget_by": null,
+      "checks": [
+        {
+          "check": "2 × Milk",
+          "passed": true,
+          "detail": "cart has 2"
+        },
+        {
+          "check": "1 × Oats & Porridge",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "1 × Instant Coffee",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "1 × Brown, Wheat & Multigrain",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "quotes bill final_total ₹273.20",
+          "passed": true,
+          "detail": "from compute_bill"
+        }
+      ],
+      "success": true,
+      "substitutions": [],
+      "discount": {
+        "subtotal": "273.20",
+        "valid_coupons": 0,
+        "system": "0.00",
+        "system_codes": [],
+        "optimum": "0.00",
+        "greedy": "0.00",
+        "single_best": "0.00",
+        "is_optimal": true
+      }
+    },
+    {
+      "id": "G02",
+      "title": "Named product out of stock",
+      "features": [
+        "out-of-stock",
+        "substitution"
+      ],
+      "infra_error": false,
+      "turns": [
+        {
+          "message": "Add Britannia Brown Bread and 2 packs of Maggi masala noodles.",
+          "reply": "Britannia Brown Bread was out of stock, so I replaced it with **Milk Bread** (found in Aisle 2, Shelf 2). \n\nFor the Maggi, I added **2 packs of Noodles - Masala 280 gm + Ketchup Tomato 1 kg** (found in Aisle 5, Shelf 10).\n\n**Bill Summary:**\n- **Subtotal:** ₹402.40\n- **Discount:** ₹50.00 (via coupon `SNACK15`)\n- **Final Total:** ₹352.40",
+          "latency_s": 7.79,
+          "llm_calls": 3,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "search_products",
+            "search_products",
+            "update_cart",
+            "update_cart"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 5,
+          "service_error": false
+        }
+      ],
+      "cart": [
+        {
+          "product_id": 113,
+          "brand": "Britannia",
+          "name": "Milk Bread",
+          "product_type": "Milk, White & Sandwich",
+          "qty": 1
+        },
+        {
+          "product_id": 841,
+          "brand": "MAGGI",
+          "name": "Noodles - Masala 280 gm + Ketchup Tomato 1 kg",
+          "product_type": "Instant Noodles",
+          "qty": 2
+        }
+      ],
+      "final_total": "352.40",
+      "budget": null,
+      "over_budget_by": null,
+      "checks": [
+        {
+          "check": "1 × Brown, Wheat & Multigrain",
+          "passed": false,
+          "detail": "cart has 0"
+        },
+        {
+          "check": "2 × Instant Noodles",
+          "passed": true,
+          "detail": "cart has 2"
+        },
+        {
+          "check": "unavailable #103 not over-sold",
+          "passed": true,
+          "detail": "ok"
+        }
+      ],
+      "success": false,
+      "substitutions": [
+        {
+          "product_id": 103,
+          "outcome": "missing",
+          "substitute": null,
+          "same_type": false,
+          "in_stock": false,
+          "rank": null
+        }
+      ],
+      "discount": {
+        "subtotal": "402.40",
+        "valid_coupons": 1,
+        "system": "50.00",
+        "system_codes": [
+          "SNACK15"
+        ],
+        "optimum": "50.00",
+        "greedy": "50.00",
+        "single_best": "50.00",
+        "is_optimal": true
+      }
+    },
+    {
+      "id": "G03",
+      "title": "Two out-of-stock items",
+      "features": [
+        "out-of-stock",
+        "substitution"
+      ],
+      "infra_error": false,
+      "turns": [
+        {
+          "message": "I want Bagrrys Oats Atta and a Coke Zero.",
+          "reply": "Bagrrys Oats - Atta and Coke Zero are currently out of stock. \n\nFor the oats, we have alternatives like Saffola Oats - 100% Natural (₹85.00, Aisle 5, Shelf A5-S9), GoodDiet Millet Masala Oats, Quaker Oats, and Kelloggs Oats.\nFor Coke Zero, we have alternatives like Shunya Fizz - Lime Lemon Classic Cola (₹120.00, Aisle 6, Shelf A6-S2), Pepsi Soft Drink, Limca, and Kingfisher Radler.\n\nWould you like me to add any of these substitutes to your cart?",
+          "latency_s": 5.2,
+          "llm_calls": 3,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "search_products",
+            "search_products",
+            "find_substitutes",
+            "find_substitutes"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 4,
+          "service_error": false
+        }
+      ],
+      "cart": [],
+      "final_total": "0.00",
+      "budget": null,
+      "over_budget_by": null,
+      "checks": [
+        {
+          "check": "1 × Oats & Porridge",
+          "passed": false,
+          "detail": "cart has 0"
+        },
+        {
+          "check": "1 × Cold Drinks",
+          "passed": false,
+          "detail": "cart has 0"
+        },
+        {
+          "check": "unavailable #779 not over-sold",
+          "passed": true,
+          "detail": "ok"
+        },
+        {
+          "check": "unavailable #314 not over-sold",
+          "passed": true,
+          "detail": "ok"
+        }
+      ],
+      "success": false,
+      "substitutions": [
+        {
+          "product_id": 779,
+          "outcome": "offered",
+          "substitute": null,
+          "same_type": true,
+          "in_stock": true,
+          "rank": null
+        },
+        {
+          "product_id": 314,
+          "outcome": "offered",
+          "substitute": null,
+          "same_type": true,
+          "in_stock": true,
+          "rank": null
+        }
+      ],
+      "discount": {
+        "subtotal": "0.00",
+        "valid_coupons": 0,
+        "system": "0.00",
+        "system_codes": [],
+        "optimum": "0.00",
+        "greedy": "0.00",
+        "single_best": "0.00",
+        "is_optimal": true
+      }
+    },
+    {
+      "id": "G04",
+      "title": "Budget + coupon + out of stock (main demo)",
+      "features": [
+        "budget",
+        "coupon",
+        "out-of-stock",
+        "budget-fit"
+      ],
+      "infra_error": false,
+      "turns": [
+        {
+          "message": "I need 3 Instant Tea Premix Turmeric Ginger, 2 Homogenized Milk and Britannia Brown Bread. My budget is ₹440",
+          "reply": "Britannia Brown Bread is currently out of stock, so I added **Brown Bread - Safe, Preservative Free** (Fresho) instead.\n\nHere are the locations of your items:\n- **Instant Tea Premix - Turmeric Ginger** (3 packs): Aisle 6, Shelf A6-S5\n- **Homogenized Milk** (2 packs): Aisle 2, Shelf A2-S5\n- **Brown Bread - Safe, Preservative Free** (1 pack): Aisle 2, Shelf A2-S2\n\nOther bread alternatives available in Aisle 2 (Shelf A2-S2) include Multigrain Bread (Britannia) and Milk Bread (Britannia).\n\nYour bill total is currently **₹451.90**, which is over your budget of **₹440.00** by **₹11.90**. \n\nWould you like me to apply the suggested swap to bring it within budget (replacing Homogenized Milk with Camel Milk, bringing the total to **₹431.90**)?",
+          "latency_s": 6.8,
+          "llm_calls": 5,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "set_budget",
+            "search_products",
+            "search_products",
+            "search_products",
+            "update_cart",
+            "update_cart",
+            "find_substitutes",
+            "update_cart"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 8,
+          "service_error": false
+        }
+      ],
+      "cart": [
+        {
+          "product_id": 104,
+          "brand": "Fresho",
+          "name": "Brown Bread - Safe, Preservative Free",
+          "product_type": "Brown, Wheat & Multigrain",
+          "qty": 1
+        },
+        {
+          "product_id": 173,
+          "brand": "Amul",
+          "name": "Homogenized Milk",
+          "product_type": "Milk",
+          "qty": 2
+        },
+        {
+          "product_id": 388,
+          "brand": "VAHDAM",
+          "name": "Instant Tea Premix - Turmeric Ginger",
+          "product_type": "Tea Bags",
+          "qty": 3
+        }
+      ],
+      "final_total": "451.90",
+      "budget": "440.00",
+      "over_budget_by": "11.90",
+      "checks": [
+        {
+          "check": "3 × Tea Bags",
+          "passed": true,
+          "detail": "cart has 3"
+        },
+        {
+          "check": "2 × Milk",
+          "passed": true,
+          "detail": "cart has 2"
+        },
+        {
+          "check": "1 × Brown, Wheat & Multigrain",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "unavailable #103 not over-sold",
+          "passed": true,
+          "detail": "ok"
+        },
+        {
+          "check": "budget ₹440.00 recorded",
+          "passed": true,
+          "detail": "recorded 440.00"
+        }
+      ],
+      "success": true,
+      "substitutions": [
+        {
+          "product_id": 103,
+          "outcome": "added",
+          "substitute": 104,
+          "same_type": true,
+          "in_stock": true,
+          "rank": 2
+        }
+      ],
+      "discount": {
+        "subtotal": "526.90",
+        "valid_coupons": 2,
+        "system": "75.00",
+        "system_codes": [
+          "BEV75"
+        ],
+        "optimum": "75.00",
+        "greedy": "75.00",
+        "single_best": "75.00",
+        "is_optimal": true
+      }
+    },
+    {
+      "id": "G05",
+      "title": "Store navigation only",
+      "features": [
+        "location"
+      ],
+      "infra_error": false,
+      "turns": [
+        {
+          "message": "Where can I find basmati rice and sunflower oil?",
+          "reply": "You can find both basmati rice and sunflower oil in Aisle 4 (Foodgrains, Oil & Masala). \n\n- **Basmati Rice** is located on **Shelf 7** (A4-S7). We have options such as Kohinoor Basmati Rice Royale (1 kg) priced at ₹111.00, Kohinoor Traditional at ₹174.00, bb Royal Biryani Basmati Rice at ₹228.00, India Gate Regular Choice at ₹380.00, and Daawat Devaaya at ₹459.00.\n- **Sunflower Oil** is located on **Shelf 4** (A4-S4). We have options like Sunpure Refined Sunflower Oil at ₹163.00, Gold Winner at ₹177.00, Sundrop Super Lite Advanced at ₹270.00, Nutriorg Organic Sunflower Oil at ₹446.50, and Sunpure Refined Sunflower Oil (larger pack) at ₹863.00.\n\nWould you like me to add any of these to your cart?",
+          "latency_s": 14.73,
+          "llm_calls": 2,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "search_products",
+            "search_products"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 11,
+          "service_error": false
+        }
+      ],
+      "cart": [],
+      "final_total": "0.00",
+      "budget": null,
+      "over_budget_by": null,
+      "checks": [
+        {
+          "check": "cart stays empty",
+          "passed": true,
+          "detail": "0 line(s)"
+        },
+        {
+          "check": "names aisle of Basmati Rice",
+          "passed": true,
+          "detail": "expected Aisle 4"
+        },
+        {
+          "check": "names aisle of Sunflower, Rice Bran Oil",
+          "passed": true,
+          "detail": "expected Aisle 4"
+        }
+      ],
+      "success": true,
+      "substitutions": [],
+      "discount": {
+        "subtotal": "0.00",
+        "valid_coupons": 0,
+        "system": "0.00",
+        "system_codes": [],
+        "optimum": "0.00",
+        "greedy": "0.00",
+        "single_best": "0.00",
+        "is_optimal": true
+      }
+    },
+    {
+      "id": "G06",
+      "title": "Typos in the request",
+      "features": [
+        "typo-tolerance",
+        "multi-item"
+      ],
+      "infra_error": false,
+      "turns": [
+        {
+          "message": "I need a pack of egs, amul paneer and some buter",
+          "reply": "I have added the following items to your cart:\n\n1. **Eggs - White Leghorn** (Aisle 3, Shelf A3-S1)\n2. **Malai Paneer - Block** (Aisle 2, Shelf A2-S5)\n3. **Unsalted Butter** (Aisle 2, Shelf A2-S5)\n\nYour bill total is **₹418.20** (with **₹39.80** saved via coupon **DAIRY10**). \n\n*(Tip: Add just **₹42.00** more to unlock the **SAVE10** coupon!)* Let me know if you need anything else or if you are ready to check out!",
+          "latency_s": 6.49,
+          "llm_calls": 3,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "search_products",
+            "search_products",
+            "search_products",
+            "update_cart",
+            "update_cart",
+            "update_cart"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 6,
+          "service_error": false
+        }
+      ],
+      "cart": [
+        {
+          "product_id": 144,
+          "brand": "Amul",
+          "name": "Unsalted Butter",
+          "product_type": "Butter & Margarine",
+          "qty": 1
+        },
+        {
+          "product_id": 180,
+          "brand": "Amul",
+          "name": "Malai Paneer - Block",
+          "product_type": "Paneer, Tofu & Cream",
+          "qty": 1
+        },
+        {
+          "product_id": 505,
+          "brand": "Mpm",
+          "name": "Eggs - White Leghorn",
+          "product_type": "Farm Eggs",
+          "qty": 1
+        }
+      ],
+      "final_total": "418.20",
+      "budget": null,
+      "over_budget_by": null,
+      "checks": [
+        {
+          "check": "1 × Farm Eggs",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "1 × Paneer, Tofu & Cream",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "1 × Butter & Margarine",
+          "passed": true,
+          "detail": "cart has 1"
+        }
+      ],
+      "success": true,
+      "substitutions": [],
+      "discount": {
+        "subtotal": "458.00",
+        "valid_coupons": 2,
+        "system": "39.80",
+        "system_codes": [
+          "DAIRY10"
+        ],
+        "optimum": "39.80",
+        "greedy": "39.80",
+        "single_best": "39.80",
+        "is_optimal": true
+      }
+    },
+    {
+      "id": "G07",
+      "title": "Quantity above live stock",
+      "features": [
+        "stock-limit",
+        "substitution"
+      ],
+      "infra_error": false,
+      "turns": [
+        {
+          "message": "Add 5 Amul Fresh Toned Milk",
+          "reply": "We only had 3 packs of Fresh Toned Milk in stock, so I've added all 3 available packs to your cart. \n\nYou can find Fresh Toned Milk in Aisle 2, Shelf A2-S5.\n\nYour current bill total is ₹99.00. \n*(Hint: Add ₹1.00 more of Amul products to unlock the coupon AMUL5!)* \n\nWould you like to add anything else?",
+          "latency_s": 10.28,
+          "llm_calls": 4,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "search_products",
+            "check_stock",
+            "update_cart"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 3,
+          "service_error": false
+        }
+      ],
+      "cart": [
+        {
+          "product_id": 171,
+          "brand": "Amul",
+          "name": "Fresh Toned Milk",
+          "product_type": "Milk",
+          "qty": 3
+        }
+      ],
+      "final_total": "99.00",
+      "budget": null,
+      "over_budget_by": null,
+      "checks": [
+        {
+          "check": "5 × Milk",
+          "passed": false,
+          "detail": "cart has 3"
+        },
+        {
+          "check": "unavailable #171 not over-sold",
+          "passed": true,
+          "detail": "ok"
+        }
+      ],
+      "success": false,
+      "substitutions": [
+        {
+          "product_id": 171,
+          "outcome": "offered",
+          "substitute": null,
+          "same_type": true,
+          "in_stock": true,
+          "rank": null
+        }
+      ],
+      "discount": {
+        "subtotal": "99.00",
+        "valid_coupons": 0,
+        "system": "0.00",
+        "system_codes": [],
+        "optimum": "0.00",
+        "greedy": "0.00",
+        "single_best": "0.00",
+        "is_optimal": true
+      }
+    },
+    {
+      "id": "G08",
+      "title": "Multi-turn cart edit",
+      "features": [
+        "multi-turn",
+        "memory",
+        "cart-edit"
+      ],
+      "infra_error": false,
+      "turns": [
+        {
+          "message": "Add 2 Maggi masala noodles and Mapro tomato ketchup.",
+          "reply": "I've added 2 packs of Noodles - Masala 280 gm + Ketchup Tomato 1 kg and 1 pack of Mapro Tomato Ketchup to your cart. Both are located in Aisle 5, Shelf A5-S10.\n\nYour current bill total is ₹397.40 (with a ₹50.00 discount applied using coupon `SNACK15`).",
+          "latency_s": 7.46,
+          "llm_calls": 3,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "search_products",
+            "search_products",
+            "update_cart",
+            "update_cart"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 3,
+          "service_error": false
+        },
+        {
+          "message": "Make the noodles 4 and remove the ketchup.",
+          "reply": "I've updated your cart to 4 packs of the Maggi noodles + ketchup combo and removed the separate Tomato Ketchup. \n\nYour final total is ₹593.32, with the coupons `SAVE10` and `SNACK15` applied for a total discount of ₹121.48!",
+          "latency_s": 4.99,
+          "llm_calls": 2,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "update_cart",
+            "update_cart"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 2,
+          "service_error": false
+        }
+      ],
+      "cart": [
+        {
+          "product_id": 841,
+          "brand": "MAGGI",
+          "name": "Noodles - Masala 280 gm + Ketchup Tomato 1 kg",
+          "product_type": "Instant Noodles",
+          "qty": 4
+        }
+      ],
+      "final_total": "593.32",
+      "budget": null,
+      "over_budget_by": null,
+      "checks": [
+        {
+          "check": "4 × Instant Noodles",
+          "passed": true,
+          "detail": "cart has 4"
+        },
+        {
+          "check": "no Tomato Ketchup & Sauces",
+          "passed": true,
+          "detail": "cart has 0"
+        },
+        {
+          "check": "quotes bill final_total ₹593.32",
+          "passed": true,
+          "detail": "from compute_bill"
+        }
+      ],
+      "success": true,
+      "substitutions": [],
+      "discount": {
+        "subtotal": "714.80",
+        "valid_coupons": 2,
+        "system": "121.48",
+        "system_codes": [
+          "SAVE10",
+          "SNACK15"
+        ],
+        "optimum": "121.48",
+        "greedy": "121.48",
+        "single_best": "71.48",
+        "is_optimal": true
+      }
+    },
+    {
+      "id": "G09",
+      "title": "Staples cart with stacked coupons",
+      "features": [
+        "coupon",
+        "multi-item"
+      ],
+      "infra_error": false,
+      "turns": [
+        {
+          "message": "Add Aashirvaad Select Atta, bb Royal Biryani Basmati Rice, 2 Sunpure sunflower oil and Himalayan Natives toor dal. Which coupons did I get?",
+          "reply": "I have added the items to your cart:\n\n- **Aashirvaad Select Atta**: Aisle 4, Shelf A4-S1\n- **bb Royal Biryani Basmati Rice**: Aisle 4, Shelf A4-S7\n- **2 × Sunpure Sunflower Oil**: Aisle 4, Shelf A4-S4\n- **Himalayan Natives Toor Dal**: Aisle 4, Shelf A4-S2\n\nThe coupons applied to your order are:\n- **SAVE10** (10% off on orders above ₹500)\n- **STAPLES50** (₹50 off Foodgrains / Oil / Masala above ₹400)\n\nYour final total is ₹763.60.",
+          "latency_s": 5.66,
+          "llm_calls": 3,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "search_products",
+            "search_products",
+            "search_products",
+            "search_products",
+            "update_cart",
+            "update_cart",
+            "update_cart",
+            "update_cart"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 8,
+          "service_error": false
+        }
+      ],
+      "cart": [
+        {
+          "product_id": 555,
+          "brand": "Aashirvaad",
+          "name": "Select Atta/Godihittu",
+          "product_type": "Atta Whole Wheat",
+          "qty": 1
+        },
+        {
+          "product_id": 569,
+          "brand": "Himalayan Natives",
+          "name": "Natives Toor Dal//Togari Bele",
+          "product_type": "Toor, Channa & Moong Dal",
+          "qty": 1
+        },
+        {
+          "product_id": 588,
+          "brand": "Sunpure",
+          "name": "Refined - Sunflower Oil",
+          "product_type": "Sunflower, Rice Bran Oil",
+          "qty": 2
+        },
+        {
+          "product_id": 632,
+          "brand": "bb Royal",
+          "name": "Biryani Basmati Rice - Extra Long",
+          "product_type": "Basmati Rice",
+          "qty": 1
+        }
+      ],
+      "final_total": "763.60",
+      "budget": null,
+      "over_budget_by": null,
+      "checks": [
+        {
+          "check": "1 × Atta Whole Wheat",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "1 × Basmati Rice",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "2 × Sunflower, Rice Bran Oil",
+          "passed": true,
+          "detail": "cart has 2"
+        },
+        {
+          "check": "1 × Toor, Channa & Moong Dal",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "quotes bill discount_total ₹140.40",
+          "passed": false,
+          "detail": "from compute_bill"
+        }
+      ],
+      "success": false,
+      "substitutions": [],
+      "discount": {
+        "subtotal": "904.00",
+        "valid_coupons": 2,
+        "system": "140.40",
+        "system_codes": [
+          "SAVE10",
+          "STAPLES50"
+        ],
+        "optimum": "140.40",
+        "greedy": "140.40",
+        "single_best": "90.40",
+        "is_optimal": true
+      }
+    },
+    {
+      "id": "G10",
+      "title": "Tight budget",
+      "features": [
+        "budget",
+        "multi-item"
+      ],
+      "infra_error": false,
+      "turns": [
+        {
+          "message": "Weekly basics under ₹500: atta, toor dal, sunflower oil and eggs.",
+          "reply": "I have added your weekly basics to the cart:\n\n1. **Chakki-Fresh-Wheat-Atta/Godihittu - Fortified** (bb Royal) – Aisle 4, Shelf A4-S1, Level 5\n2. **Natives Toor Dal//Togari Bele** (Himalayan Natives) – Aisle 4, Shelf A4-S2, Level 4\n3. **Refined - Sunflower Oil** (Sunpure) – Aisle 4, Shelf A4-S4, Level 1\n4. **Eggs - White Leghorn** (Mpm) – Aisle 3, Shelf A3-S1, Level 2\n\n**Bill Summary:**\n- **Subtotal:** ₹519.00\n- **Coupons Applied:** SAVE10 (10% off) & STAPLES50 (₹50 off Foodgrains/Oil/Masala)\n- **Final Total:** ₹417.10 (well within your ₹500 budget, with ₹82.90 remaining!)",
+          "latency_s": 6.61,
+          "llm_calls": 4,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "set_budget",
+            "search_products",
+            "search_products",
+            "search_products",
+            "search_products",
+            "update_cart",
+            "update_cart",
+            "update_cart",
+            "update_cart"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 9,
+          "service_error": false
+        }
+      ],
+      "cart": [
+        {
+          "product_id": 505,
+          "brand": "Mpm",
+          "name": "Eggs - White Leghorn",
+          "product_type": "Farm Eggs",
+          "qty": 1
+        },
+        {
+          "product_id": 551,
+          "brand": "bb Royal",
+          "name": "Chakki-Fresh-Wheat-Atta/Godihittu - Fortified",
+          "product_type": "Atta Whole Wheat",
+          "qty": 1
+        },
+        {
+          "product_id": 569,
+          "brand": "Himalayan Natives",
+          "name": "Natives Toor Dal//Togari Bele",
+          "product_type": "Toor, Channa & Moong Dal",
+          "qty": 1
+        },
+        {
+          "product_id": 588,
+          "brand": "Sunpure",
+          "name": "Refined - Sunflower Oil",
+          "product_type": "Sunflower, Rice Bran Oil",
+          "qty": 1
+        }
+      ],
+      "final_total": "417.10",
+      "budget": "500.00",
+      "over_budget_by": null,
+      "checks": [
+        {
+          "check": "1 × Atta Whole Wheat",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "1 × Toor, Channa & Moong Dal",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "1 × Sunflower, Rice Bran Oil",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "1 × Farm Eggs",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "budget ₹500.00 recorded",
+          "passed": true,
+          "detail": "recorded 500.00"
+        }
+      ],
+      "success": true,
+      "substitutions": [],
+      "discount": {
+        "subtotal": "519.00",
+        "valid_coupons": 2,
+        "system": "101.90",
+        "system_codes": [
+          "SAVE10",
+          "STAPLES50"
+        ],
+        "optimum": "101.90",
+        "greedy": "101.90",
+        "single_best": "51.90",
+        "is_optimal": true
+      }
+    },
+    {
+      "id": "G11",
+      "title": "GST question after shopping",
+      "features": [
+        "gst",
+        "out-of-stock",
+        "multi-turn"
+      ],
+      "infra_error": false,
+      "turns": [
+        {
+          "message": "Add 2 Dark Fantasy bourbon biscuits and a Cadbury Dairy Milk Silk Mousse.",
+          "reply": "I've added 2 packs of Dark Fantasy Bourbon Chocolate Cream Biscuits to your cart. You can find them in **Aisle 5, Shelf A5-S2**.\n\nUnfortunately, the Cadbury Dairy Milk Silk Mousse is currently out of stock. As a substitute, I've added a **Cadbury Dairy Milk Chocolate Bar - Champion Pack** for you, which is located in **Aisle 5, Shelf A5-S4**. Other available alternatives include Cadbury Fuse and LuvIt Dairy Rich Fruit & Nut Chocolate Bar.\n\nYour current total is **₹160.00**.",
+          "latency_s": 5.92,
+          "llm_calls": 4,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "search_products",
+            "search_products",
+            "update_cart",
+            "update_cart",
+            "update_cart"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 3,
+          "service_error": false
+        },
+        {
+          "message": "How much GST is included in my bill?",
+          "reply": "The total GST included in your bill is **₹7.62**.",
+          "latency_s": 1.44,
+          "llm_calls": 1,
+          "models": [
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 1,
+          "service_error": false
+        }
+      ],
+      "cart": [
+        {
+          "product_id": 757,
+          "brand": "Sunfeast",
+          "name": "Dark Fantasy Bourbon Chocolate Cream Biscuits",
+          "product_type": "Cream Biscuits & Wafers",
+          "qty": 2
+        },
+        {
+          "product_id": 782,
+          "brand": "Cadbury Dairy Milk",
+          "name": "Chocolate Bar - Champion Pack",
+          "product_type": "Chocolates",
+          "qty": 1
+        }
+      ],
+      "final_total": "160.00",
+      "budget": null,
+      "over_budget_by": null,
+      "checks": [
+        {
+          "check": "2 × Cream Biscuits & Wafers",
+          "passed": true,
+          "detail": "cart has 2"
+        },
+        {
+          "check": "1 × Chocolates",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "unavailable #783 not over-sold",
+          "passed": true,
+          "detail": "ok"
+        },
+        {
+          "check": "quotes bill gst_included ₹7.62",
+          "passed": true,
+          "detail": "from compute_bill"
+        }
+      ],
+      "success": true,
+      "substitutions": [
+        {
+          "product_id": 783,
+          "outcome": "added",
+          "substitute": 782,
+          "same_type": true,
+          "in_stock": true,
+          "rank": 2
+        }
+      ],
+      "discount": {
+        "subtotal": "160.00",
+        "valid_coupons": 0,
+        "system": "0.00",
+        "system_codes": [],
+        "optimum": "0.00",
+        "greedy": "0.00",
+        "single_best": "0.00",
+        "is_optimal": true
+      }
+    },
+    {
+      "id": "G12",
+      "title": "Personal care items",
+      "features": [
+        "multi-item",
+        "location"
+      ],
+      "infra_error": false,
+      "turns": [
+        {
+          "message": "Add Pampers diaper pants and Clinic Plus shampoo.",
+          "reply": "I have added the following items to your cart:\n\n1. **Pampers Diaper Pants - New Baby** – Found in Aisle 9 (Shelf A9-S4).\n2. **Clinic Plus Naturally Long Shikakai Shampoo** – Found in Aisle 8 (Shelf A8-S4).\n\n**Bill Summary:**\n- **Subtotal:** ₹636.21\n- **Coupon Applied:** SAVE10 (10% off) – ₹63.62\n- **Final Total:** ₹572.59 (includes ₹27.27 GST)\n\n*(Tip: You are just ₹47.79 away from unlocking the **BABY12** coupon for ordering ₹600.00 or more in Baby Care!)* \n\nWould you like to add anything else or proceed to checkout?",
+          "latency_s": 4.6,
+          "llm_calls": 3,
+          "models": [
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash-lite"
+          ],
+          "tool_calls": [
+            "search_products",
+            "search_products",
+            "update_cart",
+            "update_cart"
+          ],
+          "grounded": true,
+          "ungrounded": [],
+          "grounding_retried": false,
+          "values_audited": 8,
+          "service_error": false
+        }
+      ],
+      "cart": [
+        {
+          "product_id": 67,
+          "brand": "Pampers",
+          "name": "Diaper Pants - New Baby",
+          "product_type": "Diapers",
+          "qty": 1
+        },
+        {
+          "product_id": 250,
+          "brand": "Clinic Plus",
+          "name": "Naturally Long Shikakai Shampoo",
+          "product_type": "Shampoo & Conditioner",
+          "qty": 1
+        }
+      ],
+      "final_total": "572.59",
+      "budget": null,
+      "over_budget_by": null,
+      "checks": [
+        {
+          "check": "1 × Diapers",
+          "passed": true,
+          "detail": "cart has 1"
+        },
+        {
+          "check": "1 × Shampoo & Conditioner",
+          "passed": true,
+          "detail": "cart has 1"
+        }
+      ],
+      "success": true,
+      "substitutions": [],
+      "discount": {
+        "subtotal": "636.21",
+        "valid_coupons": 1,
+        "system": "63.62",
+        "system_codes": [
+          "SAVE10"
+        ],
+        "optimum": "63.62",
+        "greedy": "63.62",
+        "single_best": "63.62",
+        "is_optimal": true
+      }
+    }
+  ]
+}

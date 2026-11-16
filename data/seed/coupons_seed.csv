@@ -1,0 +1,20 @@
+code,description,discount_type,discount_value,max_discount,min_cart_value,scope,scope_value,valid_from,valid_to,is_active
+SAVE10,10% off on orders above ₹500 (max ₹150),PERCENT,10,150,500,CART,,2026-01-01,2026-12-31,true
+FLAT100,₹100 off on orders above ₹1000,FLAT,100,,1000,CART,,2026-01-01,2026-12-31,true
+MEGA15,15% off on orders above ₹2000 (max ₹400),PERCENT,15,400,2000,CART,,2026-01-01,2026-12-31,true
+FESTIVE150,₹150 off on orders above ₹1200 — festive season,FLAT,150,,1200,CART,,2026-10-01,2026-11-30,true
+BEV75,₹75 off Beverages above ₹300,FLAT,75,,300,CATEGORY,Beverages,2026-01-01,2026-12-31,true
+FRESH20,20% off Fruits & Vegetables above ₹250 (max ₹80),PERCENT,20,80,250,CATEGORY,Fruits & Vegetables,2026-01-01,2026-12-31,true
+STAPLES50,₹50 off Foodgrains / Oil / Masala above ₹400,FLAT,50,,400,CATEGORY,"Foodgrains, Oil & Masala",2026-01-01,2026-12-31,true
+SNACK15,15% off Snacks & Branded Foods above ₹200 (max ₹50),PERCENT,15,50,200,CATEGORY,Snacks & Branded Foods,2026-01-01,2026-12-31,true
+CLEAN60,₹60 off Cleaning & Household above ₹350,FLAT,60,,350,CATEGORY,Cleaning & Household,2026-01-01,2026-12-31,true
+BABY12,12% off Baby Care above ₹600 (max ₹120),PERCENT,12,120,600,CATEGORY,Baby Care,2026-01-01,2026-12-31,true
+BEAUTY100,₹100 off Beauty & Hygiene above ₹799,FLAT,100,,799,CATEGORY,Beauty & Hygiene,2026-01-01,2026-12-31,true
+DAIRY10,10% off Dairy above ₹200 (max ₹60),PERCENT,10,60,200,SUB_CATEGORY,Dairy,2026-01-01,2026-12-31,true
+COFFEE30,₹30 off Coffee above ₹250,FLAT,30,,250,SUB_CATEGORY,Coffee,2026-01-01,2026-12-31,true
+AMUL5,5% off Amul products above ₹100 (max ₹40),PERCENT,5,40,100,BRAND,Amul,2026-01-01,2026-12-31,true
+FRESHO25,₹25 off Fresho products above ₹150,FLAT,25,,150,BRAND,Fresho,2026-01-01,2026-12-31,true
+BBROYAL10,10% off bb Royal staples above ₹300 (max ₹75),PERCENT,10,75,300,BRAND,bb Royal,2026-01-01,2026-12-31,true
+BRIT20,₹20 off Britannia products above ₹100,FLAT,20,,100,BRAND,Britannia,2026-01-01,2026-12-31,true
+MONSOON20,20% off monsoon sale (EXPIRED — must never be applied),PERCENT,20,200,300,CART,,2026-06-01,2026-08-31,true
+TEA40,₹40 off Tea above ₹300 (DISABLED — must never be applied),FLAT,40,,300,SUB_CATEGORY,Tea,2026-01-01,2026-12-31,false

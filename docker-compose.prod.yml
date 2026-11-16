@@ -1,0 +1,42 @@
+# Whole stack in containers (database + app), e.g. on a cloud VM:
+#
+#   docker compose -f docker-compose.prod.yml up -d --build
+#   # first time only, from your laptop (needs the data files): point DATABASE_URL at this
+#   # database (port 5432 of the VM) and run python scripts/03_seed_database.py
+#
+# Open http://<server>:8000/
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"            # needed once for seeding; close it in the firewall afterwards
+    volumes:
+      - smartcart_prod_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.5-flash-lite}
+      GEMINI_FALLBACK_MODEL: ${GEMINI_FALLBACK_MODEL:-gemini-3.1-flash-lite-preview}
+      ADMIN_TOKEN_SECRET: ${ADMIN_TOKEN_SECRET}
+    ports:
+      - "8000:8000"
+
+volumes:
+  smartcart_prod_pgdata:
