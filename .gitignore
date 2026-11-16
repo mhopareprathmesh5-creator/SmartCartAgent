@@ -8,3 +8,6 @@ kaggle.json
 .DS_Store
 .pytest_cache/
 docs/node_modules/
+
+# Word / PowerPoint lock files created while a document is open
+~$*
